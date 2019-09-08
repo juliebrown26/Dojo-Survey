@@ -11,26 +11,31 @@
     <div class="container">
         <h1>Dojo Survey</h1>
         <div class="survey">
-            <form action="survey" method="post">
+            @model Survey
+            <form asp-action="Create" asp-controller="Survey" method="post">
+                <span asp-validation-for="Name"></span><br>
                 <label>Your Name: </label>
-                <input type="text" name="name"><br>
+                <input type="text" asp-for="Name"><br>
+                <span asp-validation-for="Location"></span><br>
                 <label>Dojo Location:</label>
-                <select name="location">
+                <select asp-for="Location">
                     <option value="Boise">Boise</option>
                     <option value="Seattle">Seattle</option>
                     <option value="Chicago">Chicago</option>
                     <option value="Dallas">Dallas</option>
                     <option value="San Jose">San Jose</option>
                 </select><br>
+                <span asp-validation-for="Language"></span><br>
                 <label>Favorite Language:</label>
-                <select name="language">
+                <select asp-for="Language">
                     <option value="C#">C#</option>
                     <option value="Python">Python</option>
                     <option value="Mean">Mean</option>
                     <option value="Ruby">Ruby</option>
                 </select><br>
+                <span asp-validation-for="Comment"></span><br>
                 <label>Comment(optional):</label><br>
-                <textarea name="comment" rows="5" cols="40"></textarea><br>
+                <textarea asp-for="Comment" rows="5" cols="40"></textarea><br>
                 <button>Submit</button>
             </form>
         </div>

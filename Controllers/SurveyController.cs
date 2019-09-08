@@ -7,22 +7,29 @@ namespace dojo_survey.Controllers
     {
         [HttpGet]
         [Route("")]
-        public ViewResult Index()
+        public IActionResult Index()
         {
             return View();
         }
-        [HttpPost]
-        [Route("survey")]
-        public IActionResult Results(string Name, string Location, string Language, string Comment)
+        [HttpPost("Create")]
+        public IActionResult Create(string Name, string Location, string Language, string Comment)
         {
-            Survey newEntry = new Survey()
+            if (ModelState.IsValid)
             {
-                Name = Name,
-                Location = Location,
-                Language = Language,
-                Comment = Comment
-            };
-            return View(newEntry);
+                Survey newEntry = new Survey()
+                {
+                    Name = Name,
+                    Location = Location,
+                    Language = Language,
+                    Comment = Comment
+                };
+
+                return View("Results", newEntry);
+            }
+            else
+            {
+                return View("index");
+            }
         }
     }
 }
