@@ -8,13 +8,15 @@
     <title>Document</title>
 </head>
 <body>
+    @using dojo_survey.Models
+    @model Survey
     <div class="container">
         <div class="results">
             <h1>Submitted Info</h1>
-            <h2>Name : @ViewBag.Name</h2>
-            <h2>Dojo Location : @ViewBag.Location</h2>
-            <h2>Favorite Language : @ViewBag.Language</h2>
-            <h2>Comment : @ViewBag.Comment</h2> 
+            <h2>Name : @Model.Name</h2>
+            <h2>Dojo Location : @Model.Location</h2>
+            <h2>Favorite Language : @Model.Language</h2>
+            <h2>Comment : @Model.Comment</h2> 
             <br>
             <button><a href="/">Go Back</a></button>   
         </div>

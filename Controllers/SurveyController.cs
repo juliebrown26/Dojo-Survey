@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
-namespace dojo_survey
+using dojo_survey.Models;
+
+namespace dojo_survey.Controllers
 {
     public class SurveyController : Controller
     {
@@ -13,12 +15,14 @@ namespace dojo_survey
         [Route("survey")]
         public IActionResult Results(string Name, string Location, string Language, string Comment)
         {
-            ViewBag.name = Name;
-            ViewBag.location = Location;
-            ViewBag.language = Language;
-            ViewBag.comment = Comment;
-
-            return View();
+            Survey newEntry = new Survey()
+            {
+                Name = Name,
+                Location = Location,
+                Language = Language,
+                Comment = Comment
+            };
+            return View(newEntry);
         }
     }
 }
